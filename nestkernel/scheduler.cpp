@@ -85,6 +85,7 @@ nest::Scheduler::Scheduler( Network& net )
   : initialized_( false )
   , simulating_( false )
   , force_singlethreading_( false )
+  , skip_calibrate_nodes_( false )
   , n_threads_( 1 )
   , n_rec_procs_( 0 )
   , entry_counter_( 0 )
@@ -420,6 +421,8 @@ nest::Scheduler::prepare_simulation()
 
   // find shortest and longest delay across all MPI processes
   // this call sets the member variables
+
+  const nest::delay prev_min_delay = min_delay_;
   update_delay_extrema_();
 
   // Check for synchronicity of global rngs over processes.
@@ -441,7 +444,22 @@ nest::Scheduler::prepare_simulation()
     configure_spike_buffers_();
 
   update_nodes_vec_();
-  prepare_nodes();
+
+  if ( skip_calibrate_nodes_ )
+  {
+      if ( min_delay_ != prev_min_delay || !simulated_) 
+      {
+          std::string msg = "Entering prepare_nodes()" ;
+          std::cout << msg << std::endl;
+          prepare_nodes();
+      }
+  }
+  else
+  {
+      std::string msg =  "Entering prepare_nodes()";
+      std::cout << msg << std::endl;
+      prepare_nodes();
+  }
 
   create_secondary_events_prototypes();
 
@@ -789,6 +807,7 @@ nest::Scheduler::prepare_nodes()
             ++num_active_prelim_nodes;
         }
       }
+      
     }
     catch ( std::exception& e )
     {
@@ -1162,6 +1181,7 @@ nest::Scheduler::set_status( DictionaryDatum const& d )
   }
 
   updateValue< bool >( d, "off_grid_spiking", off_grid_spiking_ );
+  updateValue< bool >( d, "skip_calibrate_nodes", skip_calibrate_nodes_ );
 
   // set RNGs --- MUST come after n_threads_ is updated
   if ( d->known( "rngs" ) )
@@ -1353,6 +1373,7 @@ nest::Scheduler::get_status( DictionaryDatum& d ) const
   ( *d )[ "rng_seeds" ] = Token( rng_seeds_ );
   def< long >( d, "grng_seed", grng_seed_ );
   def< bool >( d, "off_grid_spiking", off_grid_spiking_ );
+  def< bool >( d, "skip_calibrate_nodes", skip_calibrate_nodes_ );
   def< long >( d, "send_buffer_size", Communicator::get_send_buffer_size() );
   def< long >( d, "receive_buffer_size", Communicator::get_recv_buffer_size() );
 

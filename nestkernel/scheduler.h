@@ -441,6 +441,7 @@ private:
   bool simulated_; //!< indicates whether the network has already been simulated for some time
   bool off_grid_spiking_; //!< indicates whether spikes are not constrained to the grid
   bool print_time_;       //!< Indicates whether time should be printed during simulations (or not)
+  bool skip_calibrate_nodes_; //!< indicates whether to skip the node calibration step 
 
   bool needs_prelim_update_; //!< there is at least one neuron model that needs preliminary update
   long max_num_prelim_iterations_; //!< maximal number of iterations used for preliminary update
@@ -794,6 +795,7 @@ Scheduler::prepare_node_( Node* n )
   // have ring buffers and can accept incoming spikes.
   n->init_buffers();
   n->calibrate();
+    
 }
 
 inline void
