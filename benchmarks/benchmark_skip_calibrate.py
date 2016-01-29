@@ -1,4 +1,3 @@
-import benchmark_utils
 import nest
 
 spike_rate = 1000.0
