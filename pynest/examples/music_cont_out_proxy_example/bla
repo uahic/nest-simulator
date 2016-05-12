@@ -1,0 +1,58 @@
+
+              -- N E S T --
+
+  Copyright (C) 2004 The NEST Initiative
+  Version 2.8.0 Apr 25 2016 14:44:42
+
+
+              -- N E S T --
+
+  Copyright (C) 2004 The NEST Initiative
+  Version 2.8.0 Apr 25 2016 14:44:42
+
+This program is provided AS IS and comes with
+NO WARRANTY. See the file LICENSE for details.
+
+Problems or suggestions?
+  Visit http://www.nest-simulator.org
+
+Type 'nest.help()' to find out more about NEST.
+This program is provided AS IS and comes with
+NO WARRANTY. See the file LICENSE for details.
+
+Problems or suggestions?
+  Visit http://www.nest-simulator.org
+
+Type 'nest.help()' to find out more about NEST.
+CSAConnector: libneurosim support not available in NEST.
+Falling back on PyNN's default CSAConnector.
+Please re-compile NEST using --with-libneurosim=PATH
+CSAConnector: libneurosim support not available in NEST.
+Falling back on PyNN's default CSAConnector.
+Please re-compile NEST using --with-libneurosim=PATH
+(2, 3, 4)
+(2, 3, 4)
+dict0 ({u'model': <SLILiteral: iaf_neuron>, u'element_type': <SLILiteral: neuron>, u'local': False, u'thread_local_id': -1},)
+dict0 ({u'vp': 0, u'V_reset': -70.0, u'tau_minus': 20.0, u'tau_m': 10.0, u'I_e': 0.0, u'element_type': <SLILiteral: neuron>, u't_spike': -1.0, u'V_m': -10.0, u'local': True, u'recordables': (<SLILiteral: V_m>,), u'E_L': -70.0, u'V_th': -55.0, u'parent': 0, u'tau_minus_triplet': 110.0, u'thread_local_id': -1, u'tau_syn': 2.0, u't_ref': 2.0, u'thread': 0, u'frozen': False, u'archiver_length': 0, u'C_m': 250.0, u'global_id': 2, u'local_id': 2, u'model': <SLILiteral: iaf_neuron>},)
+dict1 ({u'vp': 1, u'V_reset': -70.0, u'tau_minus': 20.0, u'tau_m': 10.0, u'I_e': 0.0, u'element_type': <SLILiteral: neuron>, u't_spike': -1.0, u'V_m': -20.0, u'local': True, u'recordables': (<SLILiteral: V_m>,), u'E_L': -70.0, u'V_th': -55.0, u'parent': 0, u'tau_minus_triplet': 110.0, u'thread_local_id': -1, u'tau_syn': 2.0, u't_ref': 2.0, u'thread': 0, u'frozen': False, u'archiver_length': 0, u'C_m': 250.0, u'global_id': 3, u'local_id': 3, u'model': <SLILiteral: iaf_neuron>},)
+dict1 ({u'model': <SLILiteral: iaf_neuron>, u'element_type': <SLILiteral: neuron>, u'local': False, u'thread_local_id': -1},)
+dict2 ({u'model': <SLILiteral: iaf_neuron>, u'element_type': <SLILiteral: neuron>, u'local': False, u'thread_local_id': -1},)
+dict2 ({u'vp': 0, u'V_reset': -70.0, u'tau_minus': 20.0, u'tau_m': 10.0, u'I_e': 0.0, u'element_type': <SLILiteral: neuron>, u't_spike': -1.0, u'V_m': -30.0, u'local': True, u'recordables': (<SLILiteral: V_m>,), u'E_L': -70.0, u'V_th': -55.0, u'parent': 0, u'tau_minus_triplet': 110.0, u'thread_local_id': -1, u'tau_syn': 2.0, u't_ref': 2.0, u'thread': 0, u'frozen': False, u'archiver_length': 0, u'C_m': 250.0, u'global_id': 4, u'local_id': 4, u'model': <SLILiteral: iaf_neuron>},)
+
+Thread No 0
+
+Mapping gid 2 to 0 Thread: 0
+
+Thread No 0
+
+Mapping gid 2 to 0 Thread: 0
+
+Mapping gid 3 to 1 Thread: 0
+
+Mapping gid 3 to 1 Thread: 0
+
+Mapping gid 4 to 2 Thread: 0
+
+Buffer size is 3, music map size is 3
+
+Buffer size is 2, music map size is 2
