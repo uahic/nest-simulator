@@ -32,6 +32,7 @@
 #include "propagator_stability.h"
 
 #include <limits>
+#include <iostream>
 
 /* ----------------------------------------------------------------
  * Recordables map
@@ -349,4 +350,5 @@ void
 nest::iaf_psc_exp::handle( DataLoggingRequest& e )
 {
   B_.logger_.handle( e );
+  std::cout << std::endl << " iaf_psc_exp neuron received DataLoggingRequest" << std::endl;
 }

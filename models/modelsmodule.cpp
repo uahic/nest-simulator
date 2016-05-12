@@ -125,6 +125,7 @@
 #include "music_event_in_proxy.h"
 #include "music_event_out_proxy.h"
 #include "music_cont_in_proxy.h"
+#include "music_cont_out_proxy.h"
 #include "music_message_in_proxy.h"
 #endif
 
@@ -295,6 +296,7 @@ ModelsModule::init( SLIInterpreter* )
   register_model< music_event_in_proxy >( net_, "music_event_in_proxy" );
   register_model< music_event_out_proxy >( net_, "music_event_out_proxy" );
   register_model< music_cont_in_proxy >( net_, "music_cont_in_proxy" );
+  register_model< music_cont_out_proxy >( net_, "music_cont_out_proxy" );
   register_model< music_message_in_proxy >( net_, "music_message_in_proxy" );
 #endif
 
