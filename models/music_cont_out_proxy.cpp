@@ -385,7 +385,7 @@ void
 music_cont_out_proxy::set_status( const DictionaryDatum& d )
 {
   State_ stmp = S_;
-  stmp.set( d, P_ ); // throws if BadProperty
+  stmp.set( d ); // throws if BadProperty
 
   Parameters_ ptmp = P_; // temporary copy in case of errors
   ptmp.set( d, *this, stmp, B_ ); // throws if BadProperty
@@ -418,8 +418,20 @@ music_cont_out_proxy::update( Time const& origin, const long_t from, const long_
   // handle() has access to request_, so it knows what we asked for.
   //
   // Note that not all nodes receiving the request will necessarily answer.
-  DataLoggingRequest req;
-  network()->send( *this, req );
+  //network()->send( *this, req );
+  std::vector< long_t >::const_iterator t;
+  index port = 0;
+  for( t = P_.target_gids_.begin(); t != P_.target_gids_.end(); ++t, ++port)
+  {
+      Node* const target_node = NestModule::get_network().get_node( *t );
+      DataLoggingRequest req;
+      req.set_receiver( *target_node );
+      req.set_sender( *this );
+      req.set_port( port );
+      //target_node->handle( req );
+      //oNestModule::get_network().send_to_node( req );
+      NestModule::get_network().send( *this, req );
+  }
 }
 
 void
@@ -429,6 +441,8 @@ music_cont_out_proxy::handle( DataLoggingReply& reply )
   DataLoggingReply::Container const& info = reply.get_info();
 
   const index port = reply.get_port();
+  const index sender_gid = reply.get_sender_gid();
+
   const size_t record_width = P_.record_from_.size();
   const size_t offset = port * record_width;
   const DataLoggingReply::DataItem item = info[ info.size() - 1 ].data;
